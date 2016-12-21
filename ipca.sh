@@ -51,4 +51,4 @@ URL="${URL}&dataInicial=$dataInicial"
 URL="${URL}&dataFinal=$dataFinal"
 URL="${URL}&selIndice=$selIndice"
 
-links2 -dump "$URL"
+elinks -dump "$URL"

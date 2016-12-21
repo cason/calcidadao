@@ -45,4 +45,4 @@ URL="${URL}&dataInicial=$dataInicial"
 URL="${URL}&dataFinal=$dataFinal"
 URL="${URL}&regraNova=$regraNova"
 
-links2 -dump "$URL"
+elinks -dump "$URL"

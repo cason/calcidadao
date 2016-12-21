@@ -39,4 +39,4 @@ URL="${URL}&valorCorrecao=$valorCorrecao"
 URL="${URL}&dataInicial=$dataInicial"
 URL="${URL}&dataFinal=$dataFinal"
 
-links2 -dump "$URL"
+elinks -dump "$URL"

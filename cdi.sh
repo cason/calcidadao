@@ -45,4 +45,4 @@ URL="${URL}&dataInicial=$dataInicial"
 URL="${URL}&dataFinal=$dataFinal"
 [ -n "$percentualCorrecao" ] && URL="${URL}&percentualCorrecao=$percentualCorrecao"
 
-links2 -dump "$URL"
+elinks -dump "$URL"
