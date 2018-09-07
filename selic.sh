@@ -39,4 +39,13 @@ URL="${URL}&valorCorrecao=$valorCorrecao"
 URL="${URL}&dataInicial=$dataInicial"
 URL="${URL}&dataFinal=$dataFinal"
 
-elinks -dump "$URL"
+export report_type="selic"
+export report_begin_info="Resultado da Correção pela Selic"
+
+export query_result_name="/tmp/${report_type}_query_result_$(tr -dc 0-9 < /dev/urandom  | head -c 8)"
+elinks -dump "$URL" > "$query_result_name"
+export begin_info=$(cat "$query_result_name" | grep -n "$report_begin_info" | awk {'gsub(":","",$1); print $1'})
+export end_info=$(cat "$query_result_name" | grep -n "Valor corrigido na data final" | awk {'gsub(":","",$1); print $1'})
+export lines=$(expr $end_info - $begin_info + 1)
+cat "$query_result_name" | head -n $end_info | tail -n $lines
+rm "$query_result_name"
